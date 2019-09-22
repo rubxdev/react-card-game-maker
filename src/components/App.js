@@ -1,10 +1,13 @@
+import { Router } from '@reach/router';
 import React from 'react';
 import Home from './Home';
 
 export const App = () => {
   return (
     <>
-      <Home />
+      <Router>
+        <Home default path={'/'} />
+      </Router>
     </>
   );
 };
