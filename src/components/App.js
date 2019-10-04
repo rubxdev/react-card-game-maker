@@ -1,12 +1,12 @@
 import { Router } from '@reach/router';
 import React from 'react';
-import Home from './Home';
+import GameList from './GameList';
 
-export const App = () => {
+const App = () => {
   return (
     <>
       <Router>
-        <Home default path={'/'} />
+        <GameList default path={'/games'} />
       </Router>
     </>
   );

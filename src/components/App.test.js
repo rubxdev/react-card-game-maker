@@ -1,13 +1,22 @@
 import { Router } from '@reach/router';
 import { mount } from 'enzyme';
 import React from 'react';
-import { App } from './App';
-import { Home } from './Home';
+import App from './App';
+import { MockProvider } from '../mocks/provider';
+import GameList from './GameList/GameList';
 
-let wrapper = mount(<App />);
+let wrapper = mount(
+  <MockProvider>
+    <App />
+  </MockProvider>
+);
 
 beforeEach(() => {
-  wrapper = mount(<App />);
+  wrapper = mount(
+    <MockProvider>
+      <App />
+    </MockProvider>
+  );
 });
 
 afterEach(() => {
@@ -21,9 +30,9 @@ describe('app component', () => {
 
   describe('router', () => {
     it('should contain a Router and one Route', () => {
-      const routerWrapper = wrapper
+      const routerWrapper = wrapper // To get the router-wrapper, find any component that is a route
         .find(Router)
-        .find(Home)
+        .find(GameList)
         .parents()
         .at(0);
 
@@ -34,7 +43,7 @@ describe('app component', () => {
     it('should only contain one default Route', () => {
       const routerWrapper = wrapper
         .find(Router)
-        .find(Home)
+        .find(GameList)
         .parents()
         .at(0);
       const defaultRoutes = routerWrapper
